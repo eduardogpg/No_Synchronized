@@ -6,8 +6,8 @@ package no_synchronized;
  * @author Eduardo
  */
 public class Data_Shared {
-    static int State = 0;
-   static boolean busy = false;
+    static volatile int  State = 0;
+   static volatile boolean busy = false;
     static String nameThr = "";
     
     static void setState(int number){
@@ -24,12 +24,9 @@ public class Data_Shared {
             Data_Shared.busy= true;
             Data_Shared.nameThr= th.getThisName();
             th.behavior();
-            th.changegetCriticalZone();
             th.changeSleep();
+            th.changegetCriticalZone();
             Data_Shared.ChengeBusyLiberation();
-            th.SleepThread();
-        }else{
-           
             th.SleepThread();
         }
     }

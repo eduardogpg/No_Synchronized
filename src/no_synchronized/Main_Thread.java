@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  */
 public class Main_Thread extends Thread{
    
-    private static int SleepTime = 1000;
+    private static int SleepTime = 200;
     private int Number= 0;
     private String Name= "";
     private String State= "";
@@ -32,16 +32,16 @@ public class Main_Thread extends Thread{
     }
     public void StopThread(){
         this.status = true;
+        changeSleep();
     }
     public void run(){
         while(!status){
             if(!Data_Shared.getBusy()){
                CriticalZone= true;
-                Data_Shared.ChangeBusy(this);
-                               
-            }else{
-                Spleep= true;
-                SleepThread();
+               Data_Shared.ChangeBusy(this);
+         }else{
+               Spleep= true;
+               SleepThread();
             }   
     
         }

@@ -56,9 +56,18 @@ public class View extends javax.swing.JFrame implements ActionListener{
    
             for(int y=0;y<this.list.size();y++){
                 Main_Thread thread =(Main_Thread)list.get(y);
-                  modelo.setValueAt(thread.getSleep(), y, 1);
-                  modelo.setValueAt(thread.getCriticalZone(), y, 2);
-                  modelo.setValueAt(thread.getLife(), y, 3);
+                if(thread.getSleep())
+                  modelo.setValueAt("x", y, 1);
+                else
+                     modelo.setValueAt(" ", y, 1);
+                
+                if(thread.getCriticalZone())
+                  modelo.setValueAt("x", y, 2);
+                else
+                    modelo.setValueAt(" ", y, 2);
+                
+                if(thread.getLife())
+                    modelo.setValueAt("x", y, 3);
             }
  
     }
