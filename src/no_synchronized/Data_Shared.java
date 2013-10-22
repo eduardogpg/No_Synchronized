@@ -20,21 +20,26 @@ public class Data_Shared {
     
     static void ChangeBusy(Main_Thread th){        
         if(!Data_Shared.busy){
-           //System.err.println("_______________");
+            
             Data_Shared.busy= true;
             Data_Shared.nameThr= th.getThisName();
+            th.setCiticalZone();
             th.behavior();
+            th.SleepThread();//Me ayuda a poder ver en la tabla los estados
+            th.ChangeCriticalZone();
             th.changeSleep();
-            th.changegetCriticalZone();
-            Data_Shared.ChengeBusyLiberation();
+            Data_Shared.ChangeBusyLiberation();
             th.SleepThread();
+        }else{
+           th.setSleep();
+           th.SleepThread();
         }
     }
    
     static String NameThread(){
         return Data_Shared.nameThr;
     }
-    static void ChengeBusyLiberation(){
+    static void ChangeBusyLiberation(){
       
         Data_Shared.busy = false;
     }

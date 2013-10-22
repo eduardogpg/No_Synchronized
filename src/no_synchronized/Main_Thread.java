@@ -36,18 +36,24 @@ public class Main_Thread extends Thread{
     }
     public void run(){
         while(!status){
-            if(!Data_Shared.getBusy()){
-               CriticalZone= true;
-               Data_Shared.ChangeBusy(this);
-         }else{
-               Spleep= true;
-               SleepThread();
-            }   
-    
+//            if(!Data_Shared.getBusy()){
+//               CriticalZone= true;
+//               Data_Shared.ChangeBusy(this);
+//         }else{
+//               Spleep= true;
+//               SleepThread();
+//         }   
+            Data_Shared.ChangeBusy(this);
         }
     }
-    public void changegetCriticalZone(){
+    public void ChangeCriticalZone(){
         CriticalZone= false;
+    }
+    public void setCiticalZone(){
+        CriticalZone= true;
+    }
+    public void setSleep(){
+        Spleep= true;
     }
     public void changeSleep(){
         Spleep= false;
@@ -57,18 +63,16 @@ public class Main_Thread extends Thread{
     }
    public void SleepThread(){
          try {  
-                
-                Thread.sleep(SleepTime);
+               Thread.sleep(SleepTime);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Main_Thread.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
     public void behavior(){
+       
+       Operation();
+    
             
-                if(Name.equals(Data_Shared.NameThread())){
-                    Operation();
-                       this.SleepThread();  
-                }
     }
     private void Operation(){
          int n = random.nextInt(4);

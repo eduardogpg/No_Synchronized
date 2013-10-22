@@ -52,7 +52,7 @@ public class View extends javax.swing.JFrame implements ActionListener{
       this.jTable1.setModel(modelo);
      
     }
-    public  void Checkbehavior(){
+       public  void Checkbehavior(){
    
             for(int y=0;y<this.list.size();y++){
                 Main_Thread thread =(Main_Thread)list.get(y);
